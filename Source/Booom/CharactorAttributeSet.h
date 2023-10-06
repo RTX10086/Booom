@@ -53,10 +53,10 @@ public:
 	void OnRep_MaxPhysical(const FGameplayAttributeData& OldValue);
 
 public:
-	// ÊôĞÔĞŞ¸ÄÇ°»Øµ÷
+	// å±æ€§ä¿®æ”¹å‰å›è°ƒ
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue);
 
-	// GEÖ´ĞĞºóÊôĞÔ»Øµ÷
+	// GEæ‰§è¡Œåå±æ€§å›è°ƒ
 	virtual void PostGameplayEffectExecute(const FGameplayEffectModCallbackData& Data) override;
 };
 

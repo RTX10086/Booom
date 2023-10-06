@@ -3,13 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GameFramework/Actor.h"
-#include "../Plugins/Runtime/GameplayAbilities/Source/GameplayAbilities/Public/AbilitySystemInterface.h"
+#include "AbilitySystemInterface.h"
 #include "CharactorAttributeSet.h"
+#include "GameFramework/Character.h"
 #include "Noun.generated.h"
 
 UCLASS()
-class BOOOM_API ANoun : public AActor, public IAbilitySystemInterface
+class BOOOM_API ANoun : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 	
