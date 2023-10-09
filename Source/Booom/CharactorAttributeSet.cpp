@@ -10,7 +10,9 @@ UCharactorAttributeSet::UCharactorAttributeSet():
 	Health(100.0f),
 	MaxHealth(100.0f),
 	Physical(100.0f),
-	MaxPhysical(100.0f)
+	MaxPhysical(100.0f),
+	Speed(500.0f),
+	MaxSpeed(2000.0f)
 {
 
 }
@@ -23,6 +25,9 @@ void UCharactorAttributeSet::GetLifetimeReplicatedProps(TArray<FLifetimeProperty
 	DOREPLIFETIME(UCharactorAttributeSet, MaxHealth);
 	DOREPLIFETIME(UCharactorAttributeSet, Physical);
 	DOREPLIFETIME(UCharactorAttributeSet, MaxPhysical);
+
+	DOREPLIFETIME(UCharactorAttributeSet, Speed);
+	DOREPLIFETIME(UCharactorAttributeSet, MaxSpeed);
 }
 
 void UCharactorAttributeSet::OnRep_Health(const FGameplayAttributeData& OldValue)
@@ -44,6 +49,18 @@ void UCharactorAttributeSet::OnRep_MaxPhysical(const FGameplayAttributeData& Old
 {
 	GAMEPLAYATTRIBUTE_REPNOTIFY(UCharactorAttributeSet, MaxPhysical, OldValue);
 }
+
+void UCharactorAttributeSet::OnRep_Speed(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UCharactorAttributeSet, Speed, OldValue);
+}
+
+void UCharactorAttributeSet::OnRep_MaxSpeed(const FGameplayAttributeData& OldValue)
+{
+	GAMEPLAYATTRIBUTE_REPNOTIFY(UCharactorAttributeSet, MaxSpeed, OldValue);
+}
+
+
 
 void UCharactorAttributeSet::PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue)
 {
@@ -81,3 +98,20 @@ void UCharactorAttributeSet::PostGameplayEffectExecute(const FGameplayEffectModC
 	}
 
 }
+/*Running D:/2/Epic Games/UE_5.3/Engine/Build/BatchFiles/Build.bat  -projectfiles -project="D:/UE/Booom-master/Booom-master/Booom.uproject"
+-game -rocket -progress -log="D:\UE\Booom-master\Booom-master/Saved/Logs/UnrealVersionSelector-2023.10.06-22.29.53.log"
+Using bundled DotNet SDK version: 6.0.302
+Running UnrealBuildTool: dotnet "..\..\Engine\Binaries\DotNET\UnrealBuildTool\UnrealBuildTool.dll" -projectfiles -project="D:/UE/Booom-master/Booom-master/Booom.uproject" -game -rocket -progress -log="D:\UE\Booom-master\Booom-master/Saved/Logs/UnrealVersionSelector-2023.10.06-22.29.53.log"
+Log file: D:\UE\Booom-master\Booom-master\Saved\Logs\UnrealVersionSelector-2023.10.06-22.29.53.log
+Log file: C:\Users\as\AppData\Local\UnrealBuildTool\Log_GPF.txt
+
+Some Platforms were skipped due to invalid SDK setup: IOS, Android, Linux, LinuxArm64.
+See the log file for detailed information
+
+
+Generating VisualStudio project files:
+Discovering modules, targets and source code for project...
+Visual Studio 2019 does not support .NET 6.0 C# projects, these projects will not be added to the generated solution.
+Please generate the Visual Studio 2022 solution if .NET 6.0 C# project support is required.
+Microsoft platform targets must be compiled with Visual Studio 2022 17.4 (MSVC 14.34.x) or later for the installed engine. Please update Visual Studio 2022 and ensure no configuration is forcing WindowsTargetRules.Compiler to VisualStudio2019. The current compiler version was detected as: 14.29.30148
+*/

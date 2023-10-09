@@ -52,6 +52,18 @@ public:
 	UFUNCTION()
 	void OnRep_MaxPhysical(const FGameplayAttributeData& OldValue);
 
+	UPROPERTY(BlueprintReadOnly, Category = "Speed", ReplicatedUsing = OnRep_Speed)
+	FGameplayAttributeData Speed;
+	ATTRIBUTE_ACCESSORS(UCharactorAttributeSet, Speed);
+	UFUNCTION()
+	void OnRep_Speed(const FGameplayAttributeData& OldValue);
+
+	UPROPERTY(BlueprintReadOnly, Category = "Speed", ReplicatedUsing = OnRep_MaxSpeed)
+	FGameplayAttributeData MaxSpeed;
+	ATTRIBUTE_ACCESSORS(UCharactorAttributeSet, MaxSpeed)
+	UFUNCTION()
+	void OnRep_MaxSpeed(const FGameplayAttributeData& OldValue);
+
 public:
 	// 属性修改前回调
 	virtual void PreAttributeChange(const FGameplayAttribute& Attribute, float& NewValue);
